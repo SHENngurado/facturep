@@ -5,10 +5,10 @@ namespace App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Iva extends Model
+class Cuota extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nombre','dni', 'irpf', 'direccion', 'telefono', 'correo', 'cod_postal', 'iva', 'ref_cliente'
+        'hotel_id','cliente_id', 'nombre', 'importe', 'descripcion'
     ];
 }

@@ -17,32 +17,26 @@ class clientes_seeder extends Seeder
     public function run()
     {
         DB::table('clientes')->insert([
-            'nombre' => 'Iñigo',
-            'apellido' => 'Segurado',
+            'nombre' => 'grupo hoteles SA',
             'telefono' => '616379241',
-            'correo' => 'segu_86@hotmail.com',
+            'correo' => 'gurphotelessh@hotmail.com',
             'cifdni' => '72484842C',
-            'calle' => 'Calzada de oleta',
-            'portal' => '18',
-            'piso' => '1',
-            'puerta' => 'B',
-            'cod_postal' => '20017',
-            'poblacion' => 'Donostia',
-            'provincia' => 'Gipuzkoa',
+            'direccion' => 'Calzada de oleta 18 1-B',
+            'cod_postal' => '20017 gipuzkoa',
+            'contacto_correo' => 'segu_86@hotmail.com',
+            'contacto_nombre' => 'Iñigo Segurado',
+            'contacto_telefono' => '616379241',
         ]);
         DB::table('clientes')->insert([
-            'nombre' => 'Beñat',
-            'apellido' => 'Segurado',
-            'telefono' => '666554411',
-            'correo' => Str::random(10).'@gmail.com',
-            'cifdni' => '88445533H',
-            'calle' => 'Calle san martin',
-            'portal' => '11',
-            'piso' => '5',
-            'puerta' => 'Derecha',
-            'cod_postal' => '20013',
-            'poblacion' => 'Bilbao',
-            'provincia' => 'Bizkaia',
+            'nombre' => 'marriott SA',
+            'telefono' => '616379241',
+            'correo' => 'marriottfalso@hotmail.com',
+            'cifdni' => '72484843C',
+            'direccion' => 'carrer del invent 15',
+            'cod_postal' => '20017 barcelona',
+            'contacto_correo' => 'darkpaladin@hotmail.com',
+            'contacto_nombre' => 'Beñat Arzamendi',
+            'contacto_telefono' => '616379241',
         ]);
     }
 }

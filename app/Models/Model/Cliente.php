@@ -9,7 +9,7 @@ class Cliente extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nombre','telefono','correo','cifdni','apellido','calle','portal','piso','puerta','cod_postal','poblacion','provincia'
+        'nombre','telefono','correo','cifdni','direccion','cod_postal','contacto_nombre','contacto_telefono','contacto_correo'
     ];
     public function vehiculos(){
                 return $this->hasMany('App\Models\Model\Vehiculo', 'cliente_id');

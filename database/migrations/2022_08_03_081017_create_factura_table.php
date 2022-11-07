@@ -16,13 +16,12 @@ class CreateFacturaTable extends Migration
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cliente_id');
-            $table->foreignId('vehiculo_id');
-            $table->integer('or_id');
-            $table->string('kms');
+            $table->foreignId('hotel_id');
             $table->string('iva');
-            $table->string('facturaterminada');
+            $table->string('factura_guardada');
             $table->string('cod_factura');
-            $table->string('pagado');
+            $table->string('factura_pagada');
+            $table->string('irpf');
             $table->timestamps();
         });
     }

@@ -17,16 +17,14 @@ class iva_seeder extends Seeder
     public function run()
     {
         DB::table('ivas')->insert([
-            'nombretaller' => 'Garaje Erreka',
-            'nombredueno' => 'Javier Segurado Iruretagoyena',
-            'dni' => '15885630J', 
-            'rta' => '147',
-            'direccion' => 'Pescaderia, 12 bajo',
-            'telefono' => '943 39 08 81', 
-            'correo' => 'errekapasaia@euskalnet.net',  
-            'cod_postal' => '20110 Pasaia, Gipuzkoa', 
-            'iva' => '21', 
-            'euroshora' => '46',   
+            'nombre' => 'Èric Ferran Janer',
+            'dni' => '77618205-J', 
+            'irpf' => '7',
+            'direccion' => 'Maria Cardona 31',
+            'telefono' => '673553700', 
+            'correo' => 'eric.ferran@gmail.com',  
+            'cod_postal' => 'Calella 08370', 
+            'iva' => '21',  
             'ref_cliente' => 'IBAN ES51 5003 1910 6144 48XX',     
         ]);
     }

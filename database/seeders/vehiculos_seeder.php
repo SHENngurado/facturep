@@ -16,11 +16,17 @@ class vehiculos_seeder extends Seeder
      */
     public function run()
     {
-        DB::table('vehiculos')->insert([
-            'matricula' => '4799HRY',
-            'marca' => 'Renault',
-            'modelo' => 'Megane',
+        DB::table('hoteles')->insert([
+            'nombre' => 'Hotel Rev',
+            'direccion' => 'carrer repp 31',
+            'cifdni' => '72484842C',
             'cliente_id' => '1',
+            'cod_postal' => '20017 Rev',
+            'telefono' => '616379241',
+            'correo' => 'hotelrevinvent@gmail.com',
+            'contacto_correo' => 'EricFerran@gmail.com',
+            'contacto_nombre' => 'Eric Ferran',
+            'contacto_telefono' => '616379241',
         ]);
     }
 }

@@ -16,10 +16,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(clientes_seeder::class);
         $this->call(vehiculos_seeder::class);
-        $this->call(ORs_seeder::class);
         $this->call(facturas_seeder::class);
-        $this->call(consumibles_seeder::class);
         $this->call(manodeobras_seeder::class);
         $this->call(iva_seeder::class);
+        $this->call(cuota_seeder::class);
     }
 }

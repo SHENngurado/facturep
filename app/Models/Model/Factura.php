@@ -11,14 +11,14 @@ class Factura extends Model
 
     protected $keyType = 'string';
     protected $fillable = [
-        'vehiculo_id','cliente_id','or_id', 'kms', 'iva', 'facturaterminada', 'cod_factura', 'pagado'
+        'hotel_id','cliente_id', 'irpf', 'iva', 'factura_guardada', 'cod_factura', 'factura_pagada'
     ];
     public function cliente(){
                 return $this->belongsTo('App\Models\Model\Cliente','cliente_id','id');
                 //
     }
     public function vehiculo(){
-                return $this->belongsTo('App\Models\Model\Vehiculo','vehiculo_id','id');
+                return $this->belongsTo('App\Models\Model\Vehiculo','hotel_id','id');
                 //
     }
         public function manodeobras(){

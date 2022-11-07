@@ -11,7 +11,7 @@ class Manodeobra extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
-        'nombre','euroshora','tiempo','importe','factura_id'
+        'nombre','descripcion','tipo','importe','factura_id'
     ];
 
         public function factura(){

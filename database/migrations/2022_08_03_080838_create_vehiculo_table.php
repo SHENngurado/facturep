@@ -13,11 +13,17 @@ class CreateVehiculoTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehiculos', function (Blueprint $table) {
+        Schema::create('hoteles', function (Blueprint $table) {
             $table->id();
-            $table->string('matricula');
-            $table->string('marca')->nullable();
-            $table->string('modelo')->nullable();
+            $table->string('nombre');
+            $table->string('direccion')->nullable();
+            $table->string('cod_postal')->nullable();
+            $table->string('cifdni')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('correo')->nullable();
+            $table->string('contacto_correo')->nullable();
+            $table->string('contacto_nombre')->nullable();
+            $table->string('contacto_telefono')->nullable();
             $table->foreignId('cliente_id');
             //$table->integer('cliente_id')->nullable()->unsigned();//creamos campo luego relacionamos
             //$table->foreign('cliente_id')->references('id')->on('clientes');
@@ -32,6 +38,6 @@ class CreateVehiculoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehiculos');
+        Schema::dropIfExists('hoteles');
     }
 }

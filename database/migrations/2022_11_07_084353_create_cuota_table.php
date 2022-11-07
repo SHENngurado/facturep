@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIvaTable extends Migration
+class CreateCuotaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreateIvaTable extends Migration
      */
     public function up()
     {
-        Schema::create('ivas', function (Blueprint $table) {
+        Schema::create('cuotas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('dni');
-            $table->string('direccion');
-            $table->string('telefono');
-            $table->string('correo');
-            $table->string('cod_postal');
-            $table->string('iva');
-            $table->string('irpf');
-            $table->string('ref_cliente');
+            $table->string('descripcion');
+            $table->float('importe')->nullable();
+            $table->foreignId('hotel_id');
+            $table->foreignId('cliente_id');
             $table->timestamps();
         });
     }
@@ -35,6 +31,6 @@ class CreateIvaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ivas');
+        Schema::dropIfExists('cuotas');
     }
 }

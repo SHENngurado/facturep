@@ -16,8 +16,8 @@ class CreateManodeobraTable extends Migration
         Schema::create('manodeobras', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('tiempo');
-            $table->string('euroshora');
+            $table->string('descripcion');
+            $table->string('tipo');
             $table->float('importe')->nullable();
             $table->foreignId('factura_id');
             $table->timestamps();
