@@ -20,7 +20,7 @@
         <!--fin de contenido-->
         <!-- This is an example component -->
         <div class="mt-6 py-6 border-t border-slate-200 text-center">
-          <h3>Vehículos</h3>
+          <h3>Hoteles</h3>
         </div>
 
         <div class="max-w-2xl mx-auto">
@@ -30,10 +30,10 @@
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="px-6 py-3">
-                    Matrícula
+                    Nombre
                   </th>
                   <th scope="col" class="px-6 py-3">
-                    Marca y Modelo
+                    Telefono y correo
                   </th>
                   <th scope="col" class="px-6 py-3">
                     Cliente
@@ -44,17 +44,17 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($vehiculos as $vehiculo)
+                @foreach($hoteles as $hotel)
                 <tr class="bg-white border-b">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><a href="{{ url('/infovehiculo') }}/{!!$vehiculo->id!!}">{!!$vehiculo->matricula!!}</a></td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><a href="{{ url('/infovehiculo') }}/{!!$hotel->id!!}">{!!$hotel->nombre!!}</a></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    {!!$vehiculo->marca!!}-{!!$vehiculo->modelo!!}
+                    {!!$hotel->telefono!!}-{!!$hotel->correo!!}
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    {!!$vehiculo->cliente->nombre!!} {!!$vehiculo->cliente->apellido!!}
+                    <a href="{{ url('/infocliente') }}/{!!$hotel->cliente->id!!}">{!!$hotel->cliente->nombre!!}</a>
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    <a href="{{ url('/editvehiculo') }}/{!!$vehiculo->id!!}" class="button">editar</a>
+                    <a href="{{ url('/editvehiculo') }}/{!!$hotel->id!!}" class="button">editar</a>
                   </td>
                 </tr class="bg-white border-b">
                 @endforeach

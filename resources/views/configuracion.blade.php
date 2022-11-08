@@ -190,9 +190,7 @@ h1, h2, h3, h4, h5, h6{margin:0; padding:0; font-size:20px; font-weight:normal; 
             <br>
             <nav>
               <ul>
-                <li>Nombre Comercial:  <input type="text" name="nombretaller" value="{!!$configuracion->nombretaller!!}"  required/></li>
-                <li>Titular:  <input type="text" name="nombredueno" value="{!!$configuracion->nombredueno!!}" size="30"  required/></li>
-                <li>RTA:  <input type="text" name="rta" value="{!!$configuracion->rta!!}" required/></li>
+                <li>Nombre:  <input type="text" name="nombre" value="{!!$configuracion->nombre!!}"  required/></li>
                 <li>DNI:  <input type="text" name="dni" value="{!!$configuracion->dni!!}" required/></li>
               </ul>
             </nav>
@@ -205,7 +203,7 @@ h1, h2, h3, h4, h5, h6{margin:0; padding:0; font-size:20px; font-weight:normal; 
             <nav>
               <ul>
                 <li>telefono:  <input type="text" name="telefono" value="{!!$configuracion->telefono!!}"  required/></li>
-                <li>correo taller:  <input type="text" name="correo" value="{!!$configuracion->correo!!}" size="30" required/></li>
+                <li>correo:  <input type="text" name="correo" value="{!!$configuracion->correo!!}" size="30" required/></li>
                 <li>direccion completa:  <input type="text" name="direccion" value="{!!$configuracion->direccion!!}"  required/></li>
                 <li>codigo postal y poblacion:  <input type="text" name="cod_postal" value="{!!$configuracion->cod_postal!!}" required/></li>
               </ul>
@@ -218,7 +216,7 @@ h1, h2, h3, h4, h5, h6{margin:0; padding:0; font-size:20px; font-weight:normal; 
               <ul>
                 <li>Ref cliente:  <input type="text" name="ref_cliente" value="{!!$configuracion->ref_cliente!!}" size="30" required/></li>
                 <li>Iva:  <input type="text" name="iva" value="{!!$configuracion->iva!!}"  required/></li>
-                <li>Euros/hora:  <input type="text" name="euroshora" value="{!!$configuracion->euroshora!!}" required/></li>
+                <li>IRPF:  <input type="text" name="irpf" value="{!!$configuracion->irpf!!}" required/></li>
               </ul>
             </nav>
           </td>

@@ -6,12 +6,14 @@
                 <div class="px-6">
 
                     <div class="text-center mt-2">
-                        <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">{!!$vehiculo->matricula!!} {!!$vehiculo->marca!!} {!!$vehiculo->modelo!!}</h3>
+                        <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">{!!$hotel->nombre!!}</h3>
+                        <h5 class="text-2xl text-slate-700 font-bold leading-normal mb-1">{!!$hotel->direccion!!} {!!$hotel->cod_postal!!}</h5>
+                        <h5 class="text-2xl text-slate-700 font-bold leading-normal mb-1">{!!$hotel->telefono!!} {!!$hotel->correo!!}</h5>
                         <div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
-                            <a href="{{ url('/infocliente') }}/{!!$vehiculo->cliente->id!!}">{!!$vehiculo->cliente->nombre!!} {!!$vehiculo->cliente->apellido!!}</a>
+                            <a href="{{ url('/infocliente') }}/{!!$hotel->cliente->id!!}">{!!$hotel->cliente->nombre!!}</a>
                         </div>
                         <div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
-                            {!!$vehiculo->cliente->telefono!!}  -  {!!$vehiculo->cliente->correo!!}
+                            {!!$hotel->cliente->telefono!!}  -  {!!$hotel->cliente->correo!!}
                         </div>
                     </div>
                     <!-- component tabla-->

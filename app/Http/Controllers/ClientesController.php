@@ -25,10 +25,6 @@ class ClientesController extends Controller
         }else{
             $clientes = Cliente::where('cifdni', $req->dni)->get();
         }
-
-        if ($clientes->isEmpty()){
-            $clientes = Cliente::where('apellido', $req->dni)->get();
-        }
         if ($clientes->isEmpty()){
             $clientes = Cliente::where('nombre', $req->dni)->get();
         }
@@ -40,37 +36,37 @@ class ClientesController extends Controller
     public function infocliente($cliente_id)
     {
         $cliente=Cliente::find($cliente_id);
-        $facturas=Factura::where('cliente_id', $cliente_id)->orderBy('created_at', 'DESC')->where('facturaterminada', 'si')->get();
-        $vehiculos=Vehiculo::where('cliente_id', $cliente_id)->get();
+        $facturas=Factura::where('cliente_id', $cliente_id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
+        $hoteles=Vehiculo::where('cliente_id', $cliente_id)->get();
         return view('infocliente')->with([
             'facturas'=>$facturas,
             'cliente'=>$cliente,
-            'vehiculos'=>$vehiculos,
+            'hoteles'=>$hoteles,
         ]);
     }
     public function editcliente($cliente_id)
     {
         $cliente=Cliente::find($cliente_id);
-        $facturas=Factura::where('cliente_id', $cliente_id)->orderBy('created_at', 'DESC')->where('facturaterminada', 'si')->get();
-        $vehiculos=Vehiculo::where('cliente_id', $cliente_id)->get();
+        $facturas=Factura::where('cliente_id', $cliente_id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
+        $hoteles=Vehiculo::where('cliente_id', $cliente_id)->get();
         return view('editcliente')->with([
             'facturas'=>$facturas,
             'cliente'=>$cliente,
-            'vehiculos'=>$vehiculos,
+            'hoteles'=>$hoteles,
         ]);
     }
     public function editclienteguardar(Request $req)
     {
 
-        Cliente::where('id', $req->id)->update(['nombre' => $req->nombre, 'apellido' => $req->apellido, 'cifdni' => $req->cifdni, 'telefono' => $req->telefono, 'correo' => $req->correo, 'calle' => $req->calle, 'portal' => $req->portal, 'piso' => $req->piso, 'puerta' => $req->puerta, 'cod_postal' => $req->cod_postal, 'poblacion' => $req->poblacion, 'provincia' => $req->provincia]);
+        Cliente::where('id', $req->id)->update(['nombre' => $req->nombre, 'cifdni' => $req->cifdni, 'telefono' => $req->telefono, 'correo' => $req->correo, 'direccion' => $req->direccion, 'cod_postal' => $req->cod_postal, 'contacto_correo' => $req->contacto_correo, 'contacto_nombre' => $req->contacto_nombre, 'contacto_telefono' => $req->contacto_telefono]);
 
         $cliente=Cliente::find($req->id);
-        $facturas=Factura::where('cliente_id', $req->id)->orderBy('created_at', 'DESC')->where('facturaterminada', 'si')->get();
-        $vehiculos=Vehiculo::where('cliente_id', $req->id)->get();
+        $facturas=Factura::where('cliente_id', $req->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
+        $hoteles=Vehiculo::where('cliente_id', $req->id)->get();
         return view('infocliente')->with([
             'facturas'=>$facturas,
             'cliente'=>$cliente,
-            'vehiculos'=>$vehiculos,
+            'hoteles'=>$hoteles,
         ]);
     }
     public function newcliente()
@@ -82,26 +78,23 @@ class ClientesController extends Controller
     {
         $cliente = new Cliente;
         $cliente->nombre = $req->nombre;
-        $cliente->apellido = $req->apellido;
-        $cliente->cifdni = $req->dni;
+        $cliente->cifdni = $req->cifdni;
         $cliente->correo = $req->correo;
         $cliente->telefono = $req->telefono;
-        $cliente->calle = $req->calle;
-        $cliente->portal = $req->piso;
-        $cliente->piso = $req->piso;
-        $cliente->puerta = $req->puerta;
+        $cliente->direccion = $req->direccion;
         $cliente->cod_postal = $req->cod_postal;
-        $cliente->poblacion = $req->poblacion;
-        $cliente->provincia = $req->provincia;
+        $cliente->contacto_correo = $req->contacto_correo;
+        $cliente->contacto_nombre = $req->contacto_nombre;
+        $cliente->contacto_telefono = $req->contacto_telefono;
         $cliente->save();
 
-        $clientesacado=Cliente::where('cifdni', $req->dni)->first();
-        $facturas=Factura::where('cliente_id', $req->id)->orderBy('created_at', 'DESC')->where('facturaterminada', 'si')->get();
-        $vehiculos=Vehiculo::where('cliente_id', $req->id)->get();
+        $clientesacado=Cliente::where('cifdni', $req->cifdni)->first();
+        $facturas=Factura::where('cliente_id', $req->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
+        $hoteles=Vehiculo::where('cliente_id', $req->id)->get();
         return view('infocliente')->with([
             'facturas'=>$facturas,
             'cliente'=>$clientesacado,
-            'vehiculos'=>$vehiculos,
+            'hoteles'=>$hoteles,
         ]);
     }
 }

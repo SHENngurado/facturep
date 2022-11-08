@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="text-center mt-2">
-            <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">{!!$cliente->nombre!!} {!!$cliente->apellido!!}</h3>
+            <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">{!!$cliente->nombre!!}</h3>
             <div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
                 {!!$cliente->cifdni!!}
             </div>
@@ -19,16 +19,16 @@
                 {!!$cliente->telefono!!}  -  {!!$cliente->correo!!}
             </div>
             <div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
-                {!!$cliente->calle!!} {!!$cliente->portal!!} {!!$cliente->piso!!}-{!!$cliente->puerta!!} 
+                {!!$cliente->direccion!!} {!!$cliente->cod_postal!!}
             </div>
             <div class="text-xs mt-0 mb-2 text-slate-400 font-bold uppercase">
-                {!!$cliente->cod_postal!!} {!!$cliente->poblacion!!} {!!$cliente->provincia!!}
+                {!!$cliente->contacto_nombre!!} {!!$cliente->contacto_telefono!!} {!!$cliente->contacto_correo!!}
             </div>
         </div>
         <!-- component tabla-->
 <!-- This is an example component -->
             <div class="mt-6 py-6 border-t border-slate-200 text-center">
-                <h3>Vehiculos</h3>
+                <h3>Hoteles</h3>
              </div>
 <div class="max-w-2xl mx-auto">
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -36,7 +36,7 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Matricula
+                            nombre
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Marca
@@ -47,14 +47,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($vehiculos as $vehiculo)
+                    @foreach($hoteles as $hotel)
             <tr class="bg-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><a href="{{ url('/infovehiculo') }}/{!!$vehiculo->id!!}">{!!$vehiculo->matricula!!}</a></td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><a href="{{ url('/infovehiculo') }}/{!!$hotel->id!!}">{!!$hotel->nombre!!}</a></td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {!!$vehiculo->marca!!}
+                {!!$hotel->telefono!!}
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {!!$vehiculo->modelo!!}
+                {!!$hotel->correo!!}
               </td>
             </tr class="bg-white border-b">
             @endforeach

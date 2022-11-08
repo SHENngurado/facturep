@@ -16,7 +16,6 @@
             <nav>
               <ul>
                 <li>Nombre:  <input type="text" name="nombre" value="{!!$cliente->nombre!!}"  /></li>
-                <li>Apellido:  <input type="text" name="apellido" value="{!!$cliente->apellido!!}" size="30"  /></li>
                 <li>CIF/DNI:  <input type="text" name="cifdni" value="{!!$cliente->cifdni!!}" /></li>
                 <input hidden type="text" name="id" value="{!!$cliente->id!!}" />
               </ul>
@@ -39,10 +38,8 @@
           <td>
             <nav>
               <ul>
-                <li>Calle:  <input type="text" name="calle" value="{!!$cliente->calle!!}" size="30" /></li>
-                <li>Portal:  <input type="text" name="portal" value="{!!$cliente->portal!!}"  /></li>
-                <li>Piso:  <input type="text" name="piso" value="{!!$cliente->piso!!}" /></li>
-                <li>Puerta:  <input type="text" name="puerta" value="{!!$cliente->puerta!!}" /></li>
+                <li>Dirección:  <input type="text" name="direccion" value="{!!$cliente->direccion!!}" size="30" /></li>
+                <li>Cod_postal:  <input type="text" name="cod_postal" value="{!!$cliente->cod_postal!!}"  /></li>
               </ul>
             </nav>
           </td>
@@ -52,9 +49,9 @@
           <td>
             <nav>
               <ul>
-                <li>Codigo postal:  <input type="text" name="cod_postal" value="{!!$cliente->cod_postal!!}" size="30" /></li>
-                <li>Población:  <input type="text" name="poblacion" value="{!!$cliente->poblacion!!}"  /></li>
-                <li>Provincia:  <input type="text" name="provincia" value="{!!$cliente->provincia!!}" /></li>
+                <li>Nombre contacto:  <input type="text" name="contacto_nombre" value="{!!$cliente->contacto_nombre!!}" size="30" /></li>
+                <li>Telefono contacto:  <input type="text" name="contacto_telefono" value="{!!$cliente->contacto_telefono!!}"  /></li>
+                <li>Correo contacto:  <input type="text" name="contacto_correo" value="{!!$cliente->contacto_correo!!}" /></li>
               </ul>
             </nav>
           </td>

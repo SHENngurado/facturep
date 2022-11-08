@@ -2,21 +2,27 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-6 py-4">
-        <div class="text-center mt-2 py-1">
-          <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">vehiculo de {!!$vehiculo->cliente->nombre!!} {!!$vehiculo->cliente->apellido!!}</h3>
+        <div class="text-center mt-2 py-1 elcentrador">
+          <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">este Hotel pertenece a {!!$hotel->cliente->nombre!!}</h3>
           <form method="post" autocomplete="off" enctype="multipart/form-data" action="{{ url('/editvehiculoguardar') }}" data-toogle="validator" role="form" id="logo_form">
             {{ csrf_field() }}
             <h1>EDITAR</h1>
-            <table id="customers2">
+            <table id="customers2" class="">
 
               <tbody>
                 <td>
                   <nav>
                     <ul>
-                      <li>Matricula:  <input type="text" name="matricula" value="{!!$vehiculo->matricula!!}"  /></li>
-                      <li>Marca:  <input type="text" name="marca" value="{!!$vehiculo->marca!!}" size="30"  /></li>
-                      <li>Modelo:  <input type="text" name="modelo" value="{!!$vehiculo->modelo!!}" /></li>
-                      <input hidden type="text" name="id" value="{!!$vehiculo->id!!}" />
+                      <li>Nombre:  <input  type="text" name="nombre" value="{!!$hotel->nombre!!}" /></li>
+                      <li>cifdni:  <input type="text" name="cifdni" value="{!!$hotel->cifdni!!}" /></li>
+                      <li>direccion:  <input  type="text" name="direccion" value="{!!$hotel->direccion!!}" /></li>
+                      <li>cod_postal:  <input type="text" name="cod_postal" value="{!!$hotel->cod_postal!!}" /></li>
+                      <li>correo:  <input type="text" name="correo" value="{!!$hotel->correo!!}" /></li>
+                      <li>telefono:  <input type="text" name="telefono" value="{!!$hotel->telefono!!}" /></li>
+                      <li>Nombre contacto:  <input type="text" name="contacto_nombre" value="{!!$hotel->contacto_nombre!!}" /></li>
+                      <li>telefono contacto:  <input type="text" name="contacto_telefono" value="{!!$hotel->contacto_telefono!!}" /></li>
+                      <li>correo contacto:  <input type="text" name="contacto_correo" value="{!!$hotel->contacto_correo!!}" /></li>
+                      <input hidden type="text" name="id" value="{!!$hotel->id!!}" />
                     </ul>
                   </nav>
                 </td>
@@ -35,14 +41,14 @@
             {{ csrf_field() }}
             <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">Vincular a cliente existente</h3>
             <br>
-            <table id="customers2">
+            <table id="customers2" class="elcentrador">
 
               <tbody>
                 <td>
                   <nav>
                     <ul>
                       <li>CIF/DNI:  <input type="text" name="cifdni" value=""  /></li>
-                      <input hidden type="text" name="id" value="{!!$vehiculo->id!!}" />
+                      <input hidden type="text" name="id" value="{!!$hotel->id!!}" />
                     </ul>
                   </nav>
                 </td>
@@ -56,43 +62,38 @@
         <button type="submit" class="btn btn-primary button">Guardar</button>
       </form>
       </div>
-       <div class="text-center mt-2 py-8">
+       <div class="text-center mt-2 py-8 elcentrador">
           <form method="post" enctype="multipart/form-data" action="{{ url('/editvehiculonewclient') }}" autocomplete="off" data-toogle="validator" role="form" id="logo_form">
             {{ csrf_field() }}
             <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">Vincular a Nuevo cliente</h3>
             <br>
-                <table>
+                <table class="elcentrador">
       <tbody>
-        <tr>
-          <td>
-            <nav>
-              <ul>
-                <li><input type="text" name="nombre" value="" placeholder="Nombre" required/></li>
-                <li><input type="text" name="apellido" value="" placeholder="Apellido" required/></li>
-                <li><input type="text" name="dni" value="" placeholder="DNI" required/></li>
-                <li><input type="text" name="telefono" value="" placeholder="Telefono" required/></li>
-                <li><input type="text" name="correo" value="" placeholder="Correo" /></li>
-              </ul>
-            </nav>
-          </td>
-          <td>
-            <nav>
-              <ul>
-                <li><input type="text" name="calle" value="" placeholder="Calle" /></li>
-                <li><input type="text" name="portal" value="" placeholder="Portal" maxlength="4" size="4" /><input type="text" name="piso" value="" placeholder="Piso" maxlength="4" size="4" /><input type="text" name="puerta" value="" placeholder="Puerta" maxlength="4" size="4" /></li>
-                <li><input type="text" name="cod_postal" value="" placeholder="Cod. Postal" /></li>
-                <li><input type="text" name="poblacion" value="" placeholder="Poblacion" /><li>
-                <li><input type="text" name="provincia" value="" placeholder="Provincia" /></li>
-              </ul>
-            </nav>
-          </td>
-        </tr>
-      </tbody>
+              <tr>
+                <td >
+                  <nav>
+                    <ul>
+                      <li><input type="text" name="nombre" value="" placeholder="Nombre" required/></li>
+                      <li><input type="text" name="cifdni" value="" placeholder="CIF/DNI" required/></li>
+                      <li><input type="text" name="telefono" value="" placeholder="Telefono" required/></li>
+                      <li><input type="text" name="correo" value="" placeholder="Correo" /></li>
+                    <br>
+                      <li><input type="text" name="direccion" value="" placeholder="direccion" /></li>
+                      <li><input type="text" name="cod_postal" value="" placeholder="Cod. Postal y poblacion" /></li>
+                    <br>
+                      <li><input type="text" name="contacto_nombre" value="" placeholder="contacto_nombre" /></li>
+                      <li><input type="text" name="contacto_correo" value="" placeholder="contacto_correo" /></li>
+                      <li><input type="text" name="contacto_telefono" value="" placeholder="contacto_telefono" /></li>
+                      </ul>
+                    </nav>
+                  </td>
+                </tr>
+              </tbody>
     </table>
           <br>
 
         
-          <input hidden type="text" name="id" value="{!!$vehiculo->id!!}" />
+          <input hidden type="text" name="id" value="{!!$hotel->id!!}" />
         <button type="submit" class="btn btn-primary button">Guardar</button>
       </form>
       </div>

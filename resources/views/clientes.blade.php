@@ -11,7 +11,7 @@
 
 
           <div class="form-group">
-            <input type="text" name="dni" autocomplete="off" id="dni" class="form-control input-sm btn" placeholder="CIF/DNI o apellido">
+            <input type="text" name="dni" autocomplete="off" id="dni" class="form-control input-sm btn" placeholder="CIF/DNI o nombre completo">
             <button type="submit" class="btn btn-primary button">Buscar</button>
           </div>
 

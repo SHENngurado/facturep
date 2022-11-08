@@ -2437,3 +2437,8 @@ select {
   .btn-blue:hover {
     @apply bg-blue-700;
   }
+  .elcentrador {
+        text-align: center;
+        width: 50%;
+        margin: auto;
+    }
