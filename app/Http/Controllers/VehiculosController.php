@@ -23,7 +23,7 @@ class VehiculosController extends Controller
         if($req->matricula === null){
          $hoteles = Vehiculo::all(); 
      }else{
-        $hoteles = Vehiculo::where('matricula', $req->matricula)->get();
+        $hoteles = Vehiculo::where('nombre', $req->matricula)->get();
     }
 
     return view('vehiculos')->with([
@@ -94,7 +94,7 @@ public function editvehiculonewclient(Request $req)
     $cliente->contacto_correo = $req->contacto_correo;
     $cliente->save();
 
-    $clientesacado=Cliente::where('cifdni', $req->cifdni)->first();
+    $clientesacado=Cliente::where('id', $cliente->id)->first();
     Vehiculo::where('id', $req->id)->update(['cliente_id' => $clientesacado->id]);
     $hotel=Vehiculo::find($req->id);
     $facturas=Factura::where('hotel_id', $req->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
@@ -122,7 +122,7 @@ public function newvehiculonewclient(Request $req)
     $cliente->contacto_correo = $req->contacto_correo;
     $cliente->save();
 
-    $clientesacado=Cliente::where('cifdni', $req->cifdni)->first();
+    $clientesacado=Cliente::where('id', $cliente->id)->first();
 
     $vehiculo = new Vehiculo;
     $vehiculo->nombre = $req->nombrehotel;
@@ -137,7 +137,7 @@ public function newvehiculonewclient(Request $req)
     $vehiculo->cliente_id = $clientesacado->id;
     $vehiculo->save();
 
-    $vehiculosacado=Vehiculo::where('cifdni', $req->cifdnihotel)->first();
+    $vehiculosacado=Vehiculo::where('id', $vehiculo->id)->first();
     $facturas=Factura::where('hotel_id', $vehiculosacado->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
     return view('infovehiculo')->with([
         'facturas'=>$facturas,

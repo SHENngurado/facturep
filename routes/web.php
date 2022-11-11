@@ -93,6 +93,22 @@ Route::post('/crearconsumibles/', 'FacturasController@nfconsumibles')->middlewar
 Route::get('/editpagado/{factura_id}', 'FacturasController@editpagado')->middleware('auth');
 Route::post('/buscafactura/', 'FacturasController@buscafactura')->middleware('auth');
 
+Route::post('/annadiritem/', 'FacturasController@annadiritem')->middleware('auth');
+Route::post('/annadircuota/', 'CuotaController@annadircuota')->middleware('auth');
+
+Route::get('/verresumen/{factura_id}', 'FacturasController@verresumen')->middleware('auth');
+
+Route::get('/proformas', 'FacturasController@verproformas')->middleware('auth');
+Route::get('/infoproforma/{factura_id}', 'FacturasController@infoproforma')->middleware('auth');
+Route::get('/proformatofactura/{factura_id}', 'FacturasController@guardarfacturafinal')->middleware('auth');
+
 //DESGLOSE
 Route::get('/desglose', 'ManodeobrasController@desglose')->middleware('auth');
 Route::post('/desgloseanno/', 'ManodeobrasController@desgloseanno')->middleware('auth');
+
+//CUOTAS
+Route::get('/cuotas', 'CuotaController@selecthotelcuota')->middleware('auth');
+Route::post('/vercuotasdehotel/', 'CuotaController@vercuotasdehotel')->middleware('auth');
+Route::post('/annadircuotanormal/', 'CuotaController@annadircuotanormal')->middleware('auth');
+Route::get('/borrarcuota/{hotel_id}/{cuota_id}', 'CuotaController@borrarcuota')->middleware('auth');
+Route::post('/editcuota/', 'CuotaController@editcuota')->middleware('auth');

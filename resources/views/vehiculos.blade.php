@@ -11,7 +11,7 @@
 
 
           <div class="form-group">
-            <input type="text" name="matricula" autocomplete="off" class="form-control input-sm btn" placeholder="matricula">
+            <input type="text" name="matricula" autocomplete="off" class="form-control input-sm btn" placeholder="Nombre Hotel">
             <button type="submit" class="btn btn-primary button">Buscar</button>
           </div>
 

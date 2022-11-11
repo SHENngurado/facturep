@@ -4,10 +4,14 @@
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <!--CONTENIDO-->
+
+        
+
         <!-- component -->
          <!--CONTENIDO-->
 
-        <form method="post" enctype="multipart/form-data" action="{{ url('/buscarfactura') }}" autocomplete="off" data-toogle="validator" role="form" id="logo_form">
+        <form method="post" enctype="multipart/form-data" action="{{ url('/buscarfactura') }}" data-toogle="validator" role="form" id="logo_form">
           {{ csrf_field() }}
 
 
@@ -21,7 +25,7 @@
         <!--fin de contenido-->
 <!-- This is an example component -->
     <div class="mt-6 py-6 border-t border-slate-200 text-center">
-                <h3>Facturas</h3>
+                <h3>Proformas</h3>
              </div>
 
              <div class="max-w-2xl mx-auto">
@@ -33,10 +37,7 @@
                             Código
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            fecha
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Pagado
+                            Fecha
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Cliente
@@ -44,23 +45,17 @@
                         <th scope="col" class="px-6 py-3">
                             Hotel
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            Editar
-                        </th>
+                        <th scope="col" class="px-6 py-3">Editar</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($facturas as $factura)
             <tr class="bg-white border-b">
-
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                <a href="{{ url('/infofactura') }}/{!!$factura->id!!}"><button class="btn btn-primary button">{!!$factura->cod_factura!!}</button></a>
+                <a href="{{ url('/infoproforma') }}/{!!$factura->id!!}" class="button">{!!$factura->factura_guardada!!}</a>
               </td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 {!!$factura->created_at->format('d-m-Y')!!}
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                {!!$factura->factura_pagada!!}
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{!!$factura->cliente->nombre!!}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

@@ -23,25 +23,25 @@ class ManodeobrasController extends Controller
             Carbon::now()->startOfYear(),
             Carbon::now()->endOfYear(),
         ])->whereHas('factura', function($q) {
-            $q->where('facturaterminada', 'si');
+            $q->where('factura_guardada', 'si');
         })
         ->get();
 
         $now = Carbon::now();
         $anno = $now->year;
 
-        $enero = Manodeobra::whereMonth('created_at', '01')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $febrero = Manodeobra::whereMonth('created_at', '02')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $marzo = Manodeobra::whereMonth('created_at', '03')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $abril = Manodeobra::whereMonth('created_at', '04')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $mayo = Manodeobra::whereMonth('created_at', '05')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $junio = Manodeobra::whereMonth('created_at', '06')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $julio = Manodeobra::whereMonth('created_at', '07')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $agosto = Manodeobra::whereMonth('created_at', '08')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $septiembre = Manodeobra::whereMonth('created_at', '09')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $octubre = Manodeobra::whereMonth('created_at', '10')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $noviembre = Manodeobra::whereMonth('created_at', '11')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $diciembre = Manodeobra::whereMonth('created_at', '12')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
+        $enero = Manodeobra::whereMonth('created_at', '01')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $febrero = Manodeobra::whereMonth('created_at', '02')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $marzo = Manodeobra::whereMonth('created_at', '03')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $abril = Manodeobra::whereMonth('created_at', '04')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $mayo = Manodeobra::whereMonth('created_at', '05')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $junio = Manodeobra::whereMonth('created_at', '06')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $julio = Manodeobra::whereMonth('created_at', '07')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $agosto = Manodeobra::whereMonth('created_at', '08')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $septiembre = Manodeobra::whereMonth('created_at', '09')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $octubre = Manodeobra::whereMonth('created_at', '10')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $noviembre = Manodeobra::whereMonth('created_at', '11')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $diciembre = Manodeobra::whereMonth('created_at', '12')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
 
         $sumatotal = $manodeobras->sum('importe');
         
@@ -73,22 +73,22 @@ class ManodeobrasController extends Controller
         $yearend = Carbon::create($year, $monthend, $dayend, $hourend, $minuteend, $secondend, $tz);
 
         $manodeobras = Manodeobra::whereBetween('created_at', [$yearinit,$yearend])->whereHas('factura', function($q) {
-            $q->where('facturaterminada', 'si');
+            $q->where('factura_guardada', 'si');
         })
         ->get();
 
-        $enero = Manodeobra::whereMonth('created_at', '01')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $febrero = Manodeobra::whereMonth('created_at', '02')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $marzo = Manodeobra::whereMonth('created_at', '03')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $abril = Manodeobra::whereMonth('created_at', '04')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $mayo = Manodeobra::whereMonth('created_at', '05')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $junio = Manodeobra::whereMonth('created_at', '06')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $julio = Manodeobra::whereMonth('created_at', '07')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $agosto = Manodeobra::whereMonth('created_at', '08')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $septiembre = Manodeobra::whereMonth('created_at', '09')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $octubre = Manodeobra::whereMonth('created_at', '10')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $noviembre = Manodeobra::whereMonth('created_at', '11')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
-        $diciembre = Manodeobra::whereMonth('created_at', '12')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('facturaterminada', 'si');})->sum('importe');
+        $enero = Manodeobra::whereMonth('created_at', '01')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $febrero = Manodeobra::whereMonth('created_at', '02')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $marzo = Manodeobra::whereMonth('created_at', '03')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $abril = Manodeobra::whereMonth('created_at', '04')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $mayo = Manodeobra::whereMonth('created_at', '05')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $junio = Manodeobra::whereMonth('created_at', '06')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $julio = Manodeobra::whereMonth('created_at', '07')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $agosto = Manodeobra::whereMonth('created_at', '08')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $septiembre = Manodeobra::whereMonth('created_at', '09')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $octubre = Manodeobra::whereMonth('created_at', '10')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $noviembre = Manodeobra::whereMonth('created_at', '11')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
+        $diciembre = Manodeobra::whereMonth('created_at', '12')->whereYear('created_at', $anno)->whereHas('factura', function($q) {$q->where('factura_guardada', 'si');})->sum('importe');
 
         $sumatotal = $manodeobras->sum('importe');
         $anno = $req->anno;

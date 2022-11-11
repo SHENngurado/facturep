@@ -88,7 +88,7 @@ class ClientesController extends Controller
         $cliente->contacto_telefono = $req->contacto_telefono;
         $cliente->save();
 
-        $clientesacado=Cliente::where('cifdni', $req->cifdni)->first();
+        $clientesacado=Cliente::where('id', $cliente->id)->first();
         $facturas=Factura::where('cliente_id', $req->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
         $hoteles=Vehiculo::where('cliente_id', $req->id)->get();
         return view('infocliente')->with([

@@ -44,7 +44,7 @@
                             Cliente
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Vehículo
+                            Hotel
                         </th>
                     </tr>
                 </thead>
@@ -59,11 +59,11 @@
                         {!!$factura->created_at->format('d-m-Y')!!}
                     </td>
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        <a href="{{ url('/editpagado') }}/{!!$factura->id!!}" class="button">{!!$factura->pagado!!}</a>
+                        <a href="{{ url('/editpagado') }}/{!!$factura->id!!}" class="button">{!!$factura->factura_pagada!!}</a>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{!!$factura->cliente->nombre!!} {!!$factura->cliente->apellido!!}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{!!$factura->cliente->nombre!!}</td>
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {!!$factura->vehiculo->matricula!!}
+                        {!!$factura->vehiculo->nombre!!}
                     </td>
                 </tr class="bg-white border-b">
                 @endforeach

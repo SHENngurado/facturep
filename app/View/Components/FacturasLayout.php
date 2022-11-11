@@ -25,7 +25,7 @@ class FacturasLayout extends Component
      */
     public function render()
     {
-        $facturas = Factura::orderBy('created_at', 'DESC')->where('facturaterminada', 'si')->get();
+        $facturas = Factura::orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
         return view('components.facturas-layout')->with([
             'facturas'=>$facturas
             ]);

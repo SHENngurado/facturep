@@ -20,6 +20,7 @@ class CreateCuotaTable extends Migration
             $table->float('importe')->nullable();
             $table->foreignId('hotel_id');
             $table->foreignId('cliente_id');
+            $table->string('activa');
             $table->timestamps();
         });
     }

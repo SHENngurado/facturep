@@ -22,6 +22,7 @@ class cuota_seeder extends Seeder
             'descripcion' => 'Cuota marriot temporada baja',
             'hotel_id' => '1',
             'cliente_id' => '1',
+            'activa' => 'no',
         ]);
     }
 }
