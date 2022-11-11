@@ -9,7 +9,7 @@
 
         <div class="h-screen flex flex-col items-left justify-center background-blue elcentrador">
           <h3>ESTO ES UNA PROFORMA</h3>
-          <a class="button" target="_blank" href="{{ url('/infofacturapdf') }}/{!!$factura->id!!}" style="display: block;margin-left: auto;margin-right: auto;width: 40%;">Generar PDF</a><a class="button" href="{{ url('/proformatofactura') }}/{!!$factura->id!!}" style="display: block;margin-left: auto;margin-right: auto;width: 40%;">Guardar como factura</a>
+          <a class="button" target="_blank" href="{{ url('/infoproformapdf') }}/{!!$factura->id!!}" style="display: block;margin-left: auto;margin-right: auto;width: 40%;">Generar PDF</a><a class="button" href="{{ url('/proformatofactura') }}/{!!$factura->id!!}" style="display: block;margin-left: auto;margin-right: auto;width: 40%;">Guardar como factura</a>
               <br>
           <!-- Card 1 -->
           <card class="border-gray-300 border-2 rounded-xl w-[30rem] py-7 px-5">

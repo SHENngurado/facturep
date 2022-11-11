@@ -70,7 +70,7 @@
                       <input type="text" name="cuota_id" value="{!!$cuota->id!!}" hidden />
                       <input type="text" name="hotel_id" value="{!!$hotelseleccionado->id!!}" hidden />
 
-            <button type="submit" class="btn btn-primary button">Guardar</button>
+                      <button type="submit" class="btn btn-primary button">Guardar</button>
                     </form></td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"><a href="{{ url('/borrarcuota') }}/{!!$hotelseleccionado->id!!}/{!!$cuota->id!!}" class="button" style="color: red;">Borrar</a></td>
                 </tr class="bg-white border-b">

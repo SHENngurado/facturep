@@ -101,6 +101,7 @@ Route::get('/verresumen/{factura_id}', 'FacturasController@verresumen')->middlew
 Route::get('/proformas', 'FacturasController@verproformas')->middleware('auth');
 Route::get('/infoproforma/{factura_id}', 'FacturasController@infoproforma')->middleware('auth');
 Route::get('/proformatofactura/{factura_id}', 'FacturasController@guardarfacturafinal')->middleware('auth');
+Route::get('/infoproformapdf/{factura_id}', 'FacturasController@pdfproforma')->middleware('auth');
 
 //DESGLOSE
 Route::get('/desglose', 'ManodeobrasController@desglose')->middleware('auth');

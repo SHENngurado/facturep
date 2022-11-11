@@ -281,17 +281,43 @@ public function pdf($factura_id)
     $datos = Iva::all()->first();
     $factura=Factura::find($factura_id);
     $manodeobras=Manodeobra::where('factura_id', $factura_id)->get();
-    $consumibles=Consumible::where('factura_id', $factura_id)->get();
+
     $summanodeobras = Manodeobra::where('factura_id', $factura_id)->sum('importe');
-    $sumconsumibles = Consumible::where('factura_id', $factura_id)->sum('importe');
-    $importetotal = $summanodeobras + $sumconsumibles;
-    $iva = $importetotal*21/100;
+    $importetotal = $summanodeobras;
+    $iva = $importetotal*$factura->iva/100;
+    $iva = number_format($iva, 2, '.', '');
+    $cantidadirpf = $importetotal*$factura->irpf/100;
+    $cantidadirpf = number_format($cantidadirpf, 2, '.', '');
     $importetotaliva =  $importetotal + $iva;
     $importetotaliva = number_format($importetotaliva, 2, '.', '');
+    $importetotalivairpf = $importetotaliva - $cantidadirpf;
 
 
 
-    $pdf = PDF::loadView('infofacturapdf', array('datos'=>$datos,'factura'=>$factura, 'manodeobras'=>$manodeobras, 'consumibles'=>$consumibles, 'summanodeobras'=>$summanodeobras, 'sumconsumibles'=>$sumconsumibles, 'importetotal'=>$importetotal, 'iva'=>$iva, 'importetotaliva'=>$importetotaliva));
+    $pdf = PDF::loadView('infofacturapdf', array('datos'=>$datos,'factura'=>$factura, 'manodeobras'=>$manodeobras,'summanodeobras'=>$summanodeobras, 'importetotal'=>$importetotal, 'iva'=>$iva, 'importetotalivairpf'=>$importetotalivairpf, 'cantidadirpf'=>$cantidadirpf));
+    return $pdf->stream($factura->created_at->format('d-m-Y')." ".$factura->vehiculo->matricula." ".$factura->cliente->apellido." ".$factura->cliente->nombre.".pdf");
+
+}
+
+public function pdfproforma($factura_id)
+{
+    $datos = Iva::all()->first();
+    $factura=Factura::find($factura_id);
+    $manodeobras=Manodeobra::where('factura_id', $factura_id)->get();
+
+    $summanodeobras = Manodeobra::where('factura_id', $factura_id)->sum('importe');
+    $importetotal = $summanodeobras;
+    $iva = $importetotal*$factura->iva/100;
+    $iva = number_format($iva, 2, '.', '');
+    $cantidadirpf = $importetotal*$factura->irpf/100;
+    $cantidadirpf = number_format($cantidadirpf, 2, '.', '');
+    $importetotaliva =  $importetotal + $iva;
+    $importetotaliva = number_format($importetotaliva, 2, '.', '');
+    $importetotalivairpf = $importetotaliva - $cantidadirpf;
+
+
+
+    $pdf = PDF::loadView('infoproformapdf', array('datos'=>$datos,'factura'=>$factura, 'manodeobras'=>$manodeobras,'summanodeobras'=>$summanodeobras, 'importetotal'=>$importetotal, 'iva'=>$iva, 'importetotalivairpf'=>$importetotalivairpf, 'cantidadirpf'=>$cantidadirpf));
     return $pdf->stream($factura->created_at->format('d-m-Y')." ".$factura->vehiculo->matricula." ".$factura->cliente->apellido." ".$factura->cliente->nombre.".pdf");
 
 }
