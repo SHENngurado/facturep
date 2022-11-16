@@ -45,10 +45,29 @@ public function editfactura($factura_id)
 {
     $datos = Iva::all()->first();
     $factura=Factura::find($factura_id);
+    $hotel = Vehiculo::where('id', '=', $factura->hotel_id)->first();
 
     return view('editfacturadatoscliente')->with([
         'datos'=>$datos,
         'factura'=>$factura,
+        'hotel'=>$hotel
+    ]);
+}
+
+public function editarproformaitems(Request $req)
+{
+    $datos = Iva::all()->first();
+    $factura=Factura::where('id', '=', $req->factura_id)->first();
+    $hotel = Vehiculo::where('id', '=', $req->hotel_id)->first();
+    $cuotas = Cuota::where(['hotel_id'=>$req->id,'activa'=>'si'])->get();
+    $items = Manodeobra::where('factura_id', '=', $req->factura_id)->get();
+
+    return view('editfacturamanodeobra')->with([
+        'datos'=>$datos,
+        'factura'=>$factura,
+        'hotel'=>$hotel,
+        'items'=>$items,
+        'cuotas'=>$cuotas
     ]);
 }
 
@@ -65,9 +84,29 @@ public function annadiritem(Request $req)
     //sacamos el factura_id
     $facturasacada=Factura::where(['id'=>$req->factura_id ])->first();
     $items = Manodeobra::where(['factura_id'=>$req->factura_id ])->get();
-    $cuotas = Cuota::where(['hotel_id'=>$facturasacada->hotel_id ])->get();
+    $cuotas = Cuota::where(['hotel_id'=>$facturasacada->hotel_id,'activa'=>'si'])->get();
 
-    return view('nfmanodeobra')->with([
+    return view('editfacturamanodeobra')->with([
+        'datos'=>$datos,
+        'factura'=>$facturasacada,
+        'items'=>$items,
+        'cuotas'=>$cuotas
+    ]);
+}
+
+public function borraritem($factura_id,$item_id)
+{
+    $datos = Iva::all()->first();
+
+    $item=Manodeobra::where(['id'=>$item_id ])->first();
+    $item->delete();
+    
+    //sacamos el factura_id
+    $facturasacada=Factura::where(['id'=>$factura_id ])->first();
+    $items = Manodeobra::where(['factura_id'=>$factura_id ])->get();
+    $cuotas = Cuota::where(['hotel_id'=>$facturasacada->hotel_id,'activa'=>'si'])->get();
+
+    return view('editfacturamanodeobra')->with([
         'datos'=>$datos,
         'factura'=>$facturasacada,
         'items'=>$items,
@@ -126,7 +165,7 @@ public function create(Request $req)
     //sacamos el factura_id
     $facturasacada=Factura::where(['id'=>$factura->id ])->first();
     $items= Manodeobra::where(['factura_id'=>$factura->id ])->get();
-    $cuotas = Cuota::where(['hotel_id'=>$facturasacada->hotel_id ])->get();
+    $cuotas = Cuota::where(['hotel_id'=>$facturasacada->hotel_id,'activa'=>'si'])->get();
 
 
     return view('nfmanodeobra')->with([

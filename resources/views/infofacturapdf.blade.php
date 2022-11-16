@@ -52,9 +52,14 @@
   background-color:;
   color: black;
 }
-body {
-  background-image: url("/img/fondo.png");
+.fondo {
+  background-image: url("img/fondo.png");
 } 
+.module {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+}
 
 .borderlist {
     list-style-position:inside;
@@ -64,9 +69,12 @@ body {
 </style>
 </head>
 <body>
+
   <!-- content -->
   <div class="">
-    <h2 class="title" style="font-weight: bold; color: black;">FACTURA</h2>
+    <h2 class="title" style="font-weight: bold; color: black; text-align: center;">FACTURA</h2>
+
+    <div class="module" style="color: black; vertical-align: text-top;">
     <table id="customers2">
       <tbody>
         <tr>
@@ -107,7 +115,7 @@ body {
           <td>
             <nav>
               <ul>
-                <li><h2 class="title"><p style="font-weight: bold;">{!!$factura->cliente->nombre!!}</p></li>
+                <li><h2 class="title"><p style="font-weight: bold;">{!!$factura->cliente->nombre!!}</h2></li>
                 <li>{!!$factura->cliente->cifdni!!}</li>
                 <li>{!!$factura->cliente->direccion!!}</li>
                 <li>{!!$factura->cliente->cod_postal!!}</li>
@@ -117,6 +125,7 @@ body {
         </tr>
       </tbody>
     </table>
+    </div>
     <br>
     <br>
     <br>
@@ -141,7 +150,7 @@ body {
     </table>
     <br>
     <!-- TOTAL -->
-    <div style="float: right;">
+    <div class="module" style="float: right;">
     <table id="customers">
       <td>
         <nav>
@@ -166,7 +175,9 @@ body {
       </nav>
     </td>
     </table>
-    <div>
+    </div>
+    </div>
+      </div>
   </div>
 
 </body>

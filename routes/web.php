@@ -74,7 +74,6 @@ Route::post('/newvehiculonewclient/', 'VehiculosController@newvehiculonewclient'
 //FACTURA
 Route::get('/infofactura/{factura_id}', 'FacturasController@infofactura')->middleware('auth');
 Route::get('/editfactura/{factura_id}', 'FacturasController@editfactura')->middleware('auth');
-Route::post('/editfacturamanodeobra', 'FacturasController@editfacturamanodeobra')->middleware('auth');
 Route::post('/editfacturamateriales', 'FacturasController@editfacturamateriales')->middleware('auth');
 Route::post('/editfacturaguardar', 'FacturasController@editfacturaguardar')->middleware('auth');
 Route::get('/resumenfactura/{factura_id}', 'FacturasController@resumenfactura')->middleware('auth');
@@ -102,6 +101,9 @@ Route::get('/proformas', 'FacturasController@verproformas')->middleware('auth');
 Route::get('/infoproforma/{factura_id}', 'FacturasController@infoproforma')->middleware('auth');
 Route::get('/proformatofactura/{factura_id}', 'FacturasController@guardarfacturafinal')->middleware('auth');
 Route::get('/infoproformapdf/{factura_id}', 'FacturasController@pdfproforma')->middleware('auth');
+
+Route::post('/editarproformaitems', 'FacturasController@editarproformaitems')->middleware('auth');
+Route::get('/borraritem/{factura_id}/{item_id}', 'FacturasController@borraritem')->middleware('auth');
 
 //DESGLOSE
 Route::get('/desglose', 'ManodeobrasController@desglose')->middleware('auth');
