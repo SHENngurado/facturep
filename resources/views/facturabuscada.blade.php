@@ -39,13 +39,7 @@
                             Pagado
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Cliente
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Hotel
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Editar
                         </th>
                     </tr>
                 </thead>
@@ -62,13 +56,9 @@
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 {!!$factura->factura_pagada!!}
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{!!$factura->cliente->nombre!!}</td>
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                 {!!$factura->vehiculo->nombre!!}
               </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    <a href="{{ url('/editfactura') }}/{!!$factura->id!!}" class="button">Editar</a>
-                  </td>
             </tr class="bg-white border-b">
             @endforeach
                 </tbody>

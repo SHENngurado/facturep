@@ -115,10 +115,10 @@
           <td>
             <nav>
               <ul>
-                <li><h2 class="title"><p style="font-weight: bold;">{!!$factura->cliente->nombre!!}</h2></li>
-                <li>{!!$factura->cliente->cifdni!!}</li>
-                <li>{!!$factura->cliente->direccion!!}</li>
-                <li>{!!$factura->cliente->cod_postal!!}</li>
+                <li><h2 class="title"><p style="font-weight: bold;">{!!$factura->vehiculo->nombre!!}</h2></li>
+                <li>{!!$factura->vehiculo->cifdni!!}</li>
+                <li>{!!$factura->vehiculo->direccion!!}</li>
+                <li>{!!$factura->vehiculo->cod_postal!!}</li>
               </ul>
             </nav>
           </td>

@@ -153,8 +153,8 @@ public function create(Request $req)
     //creamos el cliente primero
     $hotel = Vehiculo::where('id', '=', $req->id)->first();
 
+
     $factura = new Factura;
-    $factura->cliente_id = $hotel->cliente->id;
     $factura->hotel_id = $hotel->id;
     $factura->factura_pagada = "no";
     $factura->cod_factura = 0;
@@ -276,6 +276,7 @@ public function infoproforma($factura_id)
 
 public function guardarfacturafinal($factura_id){
     $factura = Factura::where('id', $factura_id)->first();
+    $hotel = Vehiculo::where('id', $factura->vehiculo->id)->first();
 
     //codigo factura
     $platinum=Factura::where('factura_guardada','si')->count();
@@ -284,7 +285,7 @@ public function guardarfacturafinal($factura_id){
     $date = new Carbon( $factura->created_at ); 
     $year = $date->year;
     $raw = $raw + 1;
-    $codigofactura= ($raw . '/' . $year);
+    $codigofactura= ($hotel->cod_hotel.'00' .$raw . '/' . $year);
     Factura::where('id', $factura_id)->update(['factura_guardada' => "si", 'cod_factura' => $codigofactura]);
 
 
@@ -334,7 +335,7 @@ public function pdf($factura_id)
 
 
     $pdf = PDF::loadView('infofacturapdf', array('datos'=>$datos,'factura'=>$factura, 'manodeobras'=>$manodeobras,'summanodeobras'=>$summanodeobras, 'importetotal'=>$importetotal, 'iva'=>$iva, 'importetotalivairpf'=>$importetotalivairpf, 'cantidadirpf'=>$cantidadirpf));
-    return $pdf->stream($factura->created_at->format('d-m-Y')." ".$factura->vehiculo->matricula." ".$factura->cliente->apellido." ".$factura->cliente->nombre.".pdf");
+    return $pdf->stream($factura->created_at->format('d-m-Y')." ".$factura->cod_factura." ".$factura->vehiculo->nombre.".pdf");
 
 }
 
@@ -357,7 +358,7 @@ public function pdfproforma($factura_id)
 
 
     $pdf = PDF::loadView('infoproformapdf', array('datos'=>$datos,'factura'=>$factura, 'manodeobras'=>$manodeobras,'summanodeobras'=>$summanodeobras, 'importetotal'=>$importetotal, 'iva'=>$iva, 'importetotalivairpf'=>$importetotalivairpf, 'cantidadirpf'=>$cantidadirpf));
-    return $pdf->stream($factura->created_at->format('d-m-Y')." ".$factura->vehiculo->matricula." ".$factura->cliente->apellido." ".$factura->cliente->nombre.".pdf");
+    return $pdf->stream($factura->created_at->format('d-m-Y')." ".$factura->cod_factura." ".$factura->vehiculo->nombre.".pdf");
 
 }
 
@@ -398,8 +399,29 @@ public function contabilidad()
         'facturas'=>$facturas
     ]);
 }
+public function contabilidadrevisar()
+{
+    $facturas = Factura::where('factura_pagada','si')->where('factura_guardada','si')->get();
+
+    return view('contabilidadrevisar')->with([
+        'facturas'=>$facturas
+    ]);
+}
 
 public function editpagado($factura_id)
+{
+    $factura = Factura::where('id', $factura_id)->first();
+    if($factura->factura_pagada == "no"){
+        Factura::where('id', $factura_id)->update(['factura_pagada' => "si"]);
+    }elseif($factura->factura_pagada == "si"){
+        Factura::where('id', $factura_id)->update(['factura_pagada' => "no"]);
+    }
+    $facturas = Factura::where('factura_pagada','no')->where('factura_guardada','si')->get();
+    return view('contabilidad')->with([
+        'facturas'=>$facturas
+    ]);
+}
+public function editnopagado($factura_id)
 {
     $factura = Factura::where('id', $factura_id)->first();
     if($factura->factura_pagada == "no"){
@@ -415,10 +437,21 @@ public function editpagado($factura_id)
 public function buscafactura(Request $req)
 {
 
-    $facturas=Factura::where('cod_factura', $req->cod_factura)->get();
+    $facturas=Factura::where('cod_factura', $req->cod_factura)->where('factura_guardada','si')->get();
     return view('buscafactura')->with([
         'facturas'=>$facturas
     ]);
 }
 
+public function buscafacturacont(Request $req)
+{
+
+    $facturas=Factura::where('cod_factura', $req->cod_factura)->get();
+    if($req->cod_factura == null){
+        $facturas = Factura::where('factura_pagada','no')->where('factura_guardada','si')->get();
+    }
+    return view('contabilidad')->with([
+        'facturas'=>$facturas
+    ]);
+}
 }

@@ -66,7 +66,7 @@ body {
 <body>
   <!-- content -->
   <div class="">
-    <h2 class="title" style="font-weight: bold; color: black;">FACTURA</h2>
+    <h2 class="title" style="font-weight: bold; color: black;">PROFORMA</h2>
     <table id="customers2">
       <tbody>
         <tr>
@@ -107,10 +107,10 @@ body {
           <td>
             <nav>
               <ul>
-                <li><h2 class="title"><p style="font-weight: bold;">{!!$factura->cliente->nombre!!}</p></li>
-                <li>{!!$factura->cliente->cifdni!!}</li>
-                <li>{!!$factura->cliente->direccion!!}</li>
-                <li>{!!$factura->cliente->cod_postal!!}</li>
+                <li><h2 class="title"><p style="font-weight: bold;">{!!$factura->vehiculo->nombre!!}</p></li>
+                <li>{!!$factura->vehiculo->cifdni!!}</li>
+                <li>{!!$factura->vehiculo->direccion!!}</li>
+                <li>{!!$factura->vehiculo->cod_postal!!}</li>
               </ul>
             </nav>
           </td>

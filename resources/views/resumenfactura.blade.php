@@ -14,9 +14,9 @@
 
               <!-- Description -->
               <div class="col-span-6">
-                <p class="text-gray-500 ">{!!$factura->cliente->nombre!!}</p>
-                <p class="text-gray-500 ">CIF/DNI: {!!$factura->cliente->cifdni!!}</p>
-                <p class="text-gray-500 ">tlf: {!!$factura->cliente->telefono!!}</p>
+                <p class="text-gray-500 ">{!!$factura->vehiculo->nombre!!}</p>
+                <p class="text-gray-500 ">CIF/DNI: {!!$factura->vehiculo->cifdni!!}</p>
+                <p class="text-gray-500 ">tlf: {!!$factura->vehiculo->telefono!!}</p>
                 <p class="text-gray-500 ">fecha: {!!$factura->created_at->format('d-m-Y')!!}</p>
               </div>
 

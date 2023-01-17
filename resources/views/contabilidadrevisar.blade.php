@@ -15,7 +15,7 @@
 
 
           <div class="form-group">
-            <input type="text" name="cod_factura" class="form-control input-sm btn" placeholder="Codigo factura">
+            <input type="text" name="cod_factura" class="form-control input-sm btn" placeholder="Codigo factura" required>
             <button type="submit" class="btn btn-primary button">Buscar</button>
           </div>
 
@@ -25,7 +25,8 @@
       </div>
              <!-- This is an example component -->
              <div class="text-center mt-2 py-4">
-                <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">Contabilidad</h3>
+                <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">Revisar Contabilidad</h3>
+                <a href="{{ url('/contabilidad') }}"><button class="btn btn-primary button"><-VOLVER</button></a>
             </div>
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -55,7 +56,7 @@
                         {!!$factura->created_at->format('d-m-Y')!!}
                     </td>
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        <a href="{{ url('/editpagado') }}/{!!$factura->id!!}" class="button" onclick="return confirm('seguro que desea marcar como pagado {!!$factura->cod_factura!!}?');">{!!$factura->factura_pagada!!}</a>
+                        <a href="{{ url('/editpagado') }}/{!!$factura->id!!}" class="button" onclick="return confirm('Cambiar la situación de {!!$factura->cod_factura!!}?');">{!!$factura->factura_pagada!!}</a>
                     </td>
                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {!!$factura->vehiculo->nombre!!}

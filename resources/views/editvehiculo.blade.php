@@ -3,7 +3,11 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-6 py-4">
         <div class="text-center mt-2 py-1 elcentrador">
-          <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">este Hotel pertenece a {!!$hotel->cliente->nombre!!}</h3>
+          @if($hotel->cliente_id == "0")
+            <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">Este hotel no pertenece a ningun grupo</h3>
+          @else          
+            <h3 class="text-2xl text-slate-700 font-bold leading-normal mb-1">este Hotel pertenece a {!!$hotel->cliente->nombre!!}</h3>
+          @endif
           <form method="post" autocomplete="off" enctype="multipart/form-data" action="{{ url('/editvehiculoguardar') }}" data-toogle="validator" role="form" id="logo_form">
             {{ csrf_field() }}
             <h1>EDITAR</h1>
@@ -14,6 +18,7 @@
                   <nav>
                     <ul>
                       <li>Nombre:  <input  type="text" name="nombre" value="{!!$hotel->nombre!!}" /></li>
+                      <li>Codigo:  <input  type="text" name="cod_hotel" value="{!!$hotel->cod_hotel!!}" /></li>
                       <li>cifdni:  <input type="text" name="cifdni" value="{!!$hotel->cifdni!!}" /></li>
                       <li>direccion:  <input  type="text" name="direccion" value="{!!$hotel->direccion!!}" /></li>
                       <li>cod_postal:  <input type="text" name="cod_postal" value="{!!$hotel->cod_postal!!}" /></li>

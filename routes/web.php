@@ -48,6 +48,7 @@ Route::get('/configuracion', 'BaseController@configuracion')->middleware('auth')
 Route::post('/editarconfig/', 'BaseController@editar')->middleware('auth');
 
 Route::get('/contabilidad', 'FacturasController@contabilidad')->middleware('auth')->name('contabilidad');
+Route::get('/contabilidadrevisar', 'FacturasController@contabilidadrevisar')->middleware('auth')->name('contabilidadrevisar');
 
 //CLIENTE
 Route::get('/clientes', 'ClientesController@index')->middleware('auth');
@@ -90,7 +91,9 @@ Route::post('/crearmanodeobra/', 'FacturasController@nfmanodeobra')->middleware(
 Route::post('/crearconsumibles/', 'FacturasController@nfconsumibles')->middleware('auth');
 
 Route::get('/editpagado/{factura_id}', 'FacturasController@editpagado')->middleware('auth');
+Route::get('/editnopagado/{factura_id}', 'FacturasController@editnopagado')->middleware('auth');
 Route::post('/buscafactura/', 'FacturasController@buscafactura')->middleware('auth');
+Route::post('/buscafacturacont/', 'FacturasController@buscafacturacont')->middleware('auth');
 
 Route::post('/annadiritem/', 'FacturasController@annadiritem')->middleware('auth');
 Route::post('/annadircuota/', 'CuotaController@annadircuota')->middleware('auth');

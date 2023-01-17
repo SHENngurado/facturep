@@ -36,10 +36,10 @@ class ClientesController extends Controller
     public function infocliente($cliente_id)
     {
         $cliente=Cliente::find($cliente_id);
-        $facturas=Factura::where('cliente_id', $cliente_id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
+        //$facturas=Factura::where('cliente_id', $cliente_id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
         $hoteles=Vehiculo::where('cliente_id', $cliente_id)->get();
         return view('infocliente')->with([
-            'facturas'=>$facturas,
+            //'facturas'=>$facturas,
             'cliente'=>$cliente,
             'hoteles'=>$hoteles,
         ]);
@@ -47,10 +47,10 @@ class ClientesController extends Controller
     public function editcliente($cliente_id)
     {
         $cliente=Cliente::find($cliente_id);
-        $facturas=Factura::where('cliente_id', $cliente_id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
+       //$facturas=Factura::where('cliente_id', $cliente_id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
         $hoteles=Vehiculo::where('cliente_id', $cliente_id)->get();
         return view('editcliente')->with([
-            'facturas'=>$facturas,
+            //'facturas'=>$facturas,
             'cliente'=>$cliente,
             'hoteles'=>$hoteles,
         ]);
@@ -61,10 +61,10 @@ class ClientesController extends Controller
         Cliente::where('id', $req->id)->update(['nombre' => $req->nombre, 'cifdni' => $req->cifdni, 'telefono' => $req->telefono, 'correo' => $req->correo, 'direccion' => $req->direccion, 'cod_postal' => $req->cod_postal, 'contacto_correo' => $req->contacto_correo, 'contacto_nombre' => $req->contacto_nombre, 'contacto_telefono' => $req->contacto_telefono]);
 
         $cliente=Cliente::find($req->id);
-        $facturas=Factura::where('cliente_id', $req->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
+        //$facturas=Factura::where('cliente_id', $req->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
         $hoteles=Vehiculo::where('cliente_id', $req->id)->get();
         return view('infocliente')->with([
-            'facturas'=>$facturas,
+            //'facturas'=>$facturas,
             'cliente'=>$cliente,
             'hoteles'=>$hoteles,
         ]);
@@ -89,10 +89,10 @@ class ClientesController extends Controller
         $cliente->save();
 
         $clientesacado=Cliente::where('id', $cliente->id)->first();
-        $facturas=Factura::where('cliente_id', $req->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
+        //$facturas=Factura::where('cliente_id', $req->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
         $hoteles=Vehiculo::where('cliente_id', $req->id)->get();
         return view('infocliente')->with([
-            'facturas'=>$facturas,
+            //'facturas'=>$facturas,
             'cliente'=>$clientesacado,
             'hoteles'=>$hoteles,
         ]);

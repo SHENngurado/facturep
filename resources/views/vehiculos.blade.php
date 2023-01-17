@@ -51,7 +51,11 @@
                     {!!$hotel->telefono!!}-{!!$hotel->correo!!}
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    <a href="{{ url('/infocliente') }}/{!!$hotel->cliente->id!!}">{!!$hotel->cliente->nombre!!}</a>
+                    @if($hotel->cliente_id == "0")
+
+                    @else
+                      <a href="{{ url('/infocliente') }}/{!!$hotel->cliente->id!!}">{!!$hotel->cliente->nombre!!}</a>
+                    @endif
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     <a href="{{ url('/editvehiculo') }}/{!!$hotel->id!!}" class="button">editar</a>

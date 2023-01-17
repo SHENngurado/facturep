@@ -15,7 +15,6 @@ class CreateFacturaTable extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cliente_id');
             $table->foreignId('hotel_id');
             $table->string('iva');
             $table->string('factura_guardada');

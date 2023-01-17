@@ -52,7 +52,7 @@ public function editvehiculo($vehiculo_id)
 public function editvehiculoguardar(Request $req)
 {
 
-    Vehiculo::where('id', $req->id)->update(['nombre' => $req->nombre, 'cifdni' => $req->cifdni, 'direccion' => $req->direccion, 'cod_postal' => $req->cod_postal, 'correo' => $req->correo, 'telefono' => $req->telefono, 'contacto_nombre' => $req->contacto_nombre, 'contacto_correo' => $req->contacto_correo, 'contacto_telefono' => $req->contacto_telefono]);
+    Vehiculo::where('id', $req->id)->update(['nombre' => $req->nombre, 'cod_hotel' => $req->cod_hotel, 'cifdni' => $req->cifdni, 'direccion' => $req->direccion, 'cod_postal' => $req->cod_postal, 'correo' => $req->correo, 'telefono' => $req->telefono, 'contacto_nombre' => $req->contacto_nombre, 'contacto_correo' => $req->contacto_correo, 'contacto_telefono' => $req->contacto_telefono]);
 
     $hotel=Vehiculo::find($req->id);
     $facturas=Factura::where('hotel_id', $req->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
@@ -126,6 +126,7 @@ public function newvehiculonewclient(Request $req)
 
     $vehiculo = new Vehiculo;
     $vehiculo->nombre = $req->nombrehotel;
+    $vehiculo->cod_hotel = $req->cod_hotel;
     $vehiculo->cifdni = $req->cifdnihotel;
     $vehiculo->correo = $req->correohotel;
     $vehiculo->telefono = $req->telefonohotel;
@@ -150,7 +151,26 @@ public function newvehiculovincular(Request $req)
 
 
     if ($cliente === null) {
-        return redirect()->back() ->with('info', 'Updated!');
+        $vehiculo = new Vehiculo;
+        $vehiculo->nombre = $req->nombre;
+        $vehiculo->cod_hotel = $req->cod_hotel;
+        $vehiculo->cifdni = $req->cifdni;
+        $vehiculo->correo = $req->correo;
+        $vehiculo->telefono = $req->telefono;
+        $vehiculo->direccion = $req->direccion;
+        $vehiculo->cod_postal = $req->cod_postal;
+        $vehiculo->contacto_nombre = $req->contacto_nombre;
+        $vehiculo->contacto_telefono = $req->contacto_telefono;
+        $vehiculo->contacto_correo = $req->contacto_correo;
+        $vehiculo->cliente_id = "0";
+        $vehiculo->save();
+
+        $vehiculosacado=Vehiculo::where('id', $vehiculo->id)->first();
+        $facturas=Factura::where('hotel_id', $vehiculosacado->id)->orderBy('created_at', 'DESC')->where('factura_guardada', 'si')->get();
+        return view('infovehiculo')->with([
+            'facturas'=>$facturas,
+            'hotel'=>$vehiculo,
+        ]);
 
     }else{
         $vehiculo = new Vehiculo;

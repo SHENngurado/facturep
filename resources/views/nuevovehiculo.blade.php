@@ -14,6 +14,7 @@
                   <nav>
                     <ul>
                       <li><input type="text" name="nombre" value="" placeholder="Nombre" required/></li>
+                      <li><input type="text" name="cod_hotel" value="" placeholder="Cod_hotel" required/></li>
                       <li><input type="text" name="cifdni" value="" placeholder="CIF/DNI" required/></li>
                       <li><input type="text" name="telefono" value="" placeholder="Telefono" required/></li>
                       <li><input type="text" name="correo" value="" placeholder="Correo" /></li>
@@ -72,6 +73,7 @@
                       <br>
                       <p>Datos hotel:</p>
                       <li><input type="text" name="nombrehotel" value="" placeholder="Nombre" required/></li>
+                      <li><input type="text" name="cod_hotel" value="" placeholder="Cod_hotel" required/></li>
                       <li><input type="text" name="cifdnihotel" value="" placeholder="CIF/DNI" required/></li>
                       <li><input type="text" name="telefonohotel" value="" placeholder="Telefono" required/></li>
                       <li><input type="text" name="correohotel" value="" placeholder="Correo" /></li>

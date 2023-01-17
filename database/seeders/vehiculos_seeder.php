@@ -18,6 +18,7 @@ class vehiculos_seeder extends Seeder
     {
         DB::table('vehiculos')->insert([
             'nombre' => 'Hotel Rev',
+            'cod_hotel' => 'Rev',
             'direccion' => 'carrer repp 31',
             'cifdni' => '72484842C',
             'cliente_id' => '1',
